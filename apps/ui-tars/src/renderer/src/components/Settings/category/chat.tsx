@@ -28,8 +28,8 @@ import { Input } from '@renderer/components/ui/input';
 
 const formSchema = z.object({
   language: z.enum(['en', 'zh']),
-  maxLoopCount: z.number().min(25).max(200),
-  loopIntervalInMs: z.number().min(0).max(3000),
+  maxLoopCount: z.number().min(25).max(2000000),
+  loopIntervalInMs: z.number().min(0).max(3000000),
 });
 
 export function ChatSettings() {
@@ -121,9 +121,9 @@ export function ChatSettings() {
               // console.log('field', field);
               return (
                 <FormItem>
-                  <FormLabel>Max Loop</FormLabel>
+                  <FormLabel>Max Loop, modified by yh.</FormLabel>
                   <FormDescription>
-                    Enter a number between 25-200
+                    Enter a number between 25-200000
                   </FormDescription>
                   <FormControl>
                     <Input
@@ -143,12 +143,14 @@ export function ChatSettings() {
             name="loopIntervalInMs"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Loop Wait Time (ms)</FormLabel>
-                <FormDescription>Enter a number between 0-3000</FormDescription>
+                <FormLabel>Loop Wait Time (ms), modified by yh. </FormLabel>
+                <FormDescription>
+                  Enter a number between 0-3000000
+                </FormDescription>
                 <FormControl>
                   <Input
                     type="number"
-                    placeholder="Enter a number between 0-3000"
+                    placeholder="Enter a number between 0-300000"
                     {...field}
                     value={field.value === 0 ? '' : field.value}
                     onChange={(e) => field.onChange(Number(e.target.value))}

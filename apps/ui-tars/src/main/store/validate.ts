@@ -25,8 +25,8 @@ export const PresetSchema = z.object({
   operator: z.nativeEnum(Operator),
   language: z.enum(['zh', 'en']).optional(),
   screenshotScale: z.number().min(0.1).max(1).optional(),
-  maxLoopCount: z.number().min(25).max(200).optional(),
-  loopIntervalInMs: z.number().min(0).max(3000).optional(),
+  maxLoopCount: z.number().min(25).max(2000000).optional(),
+  loopIntervalInMs: z.number().min(0).max(3000000).optional(),
   searchEngineForBrowser: z.nativeEnum(SearchEngineForSettings).optional(),
 
   // Report Settings

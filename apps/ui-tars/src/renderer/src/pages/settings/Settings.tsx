@@ -52,8 +52,8 @@ const formSchema = z.object({
   vlmBaseUrl: z.string().url(),
   vlmApiKey: z.string().min(1),
   vlmModelName: z.string().min(1),
-  maxLoopCount: z.number().min(25).max(200),
-  loopIntervalInMs: z.number().min(0).max(3000),
+  maxLoopCount: z.number().min(25).max(200000),
+  loopIntervalInMs: z.number().min(0).max(3000000),
   searchEngineForBrowser: z.nativeEnum(SearchEngineForSettings),
   reportStorageBaseUrl: z.string().optional(),
   utioBaseUrl: z.string().optional(),
@@ -402,12 +402,12 @@ export default function Settings() {
                     // console.log('field', field);
                     return (
                       <FormItem>
-                        <FormLabel>Max Loop</FormLabel>
+                        <FormLabel>Max Loop, modified by yh </FormLabel>
                         <FormControl>
                           <Input
                             type="number"
                             // disabled={isRemoteAutoUpdatedPreset}
-                            placeholder="Enter a number between 25-200"
+                            placeholder="Enter a number between 25-200000"
                             {...field}
                             value={field.value === 0 ? '' : field.value}
                             onChange={(e) =>
@@ -425,12 +425,14 @@ export default function Settings() {
                   name="loopIntervalInMs"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Loop Wait Time (ms)</FormLabel>
+                      <FormLabel>
+                        Loop Wait Time (ms), modified by yh{' '}
+                      </FormLabel>
                       <FormControl>
                         <Input
                           type="number"
                           // disabled={isRemoteAutoUpdatedPreset}
-                          placeholder="Enter a number between 0-3000"
+                          placeholder="Enter a number between 0-3000000"
                           {...field}
                           value={field.value === 0 ? '' : field.value}
                           onChange={(e) =>
